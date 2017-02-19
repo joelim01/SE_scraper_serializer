@@ -23,8 +23,8 @@ class Scraper
   end
 
   def local_pages
-    file = File.read("../data/#{@type_of_listing}.html")
-    file2 = File.read("../data/#{@type_of_listing}2.html")
+    file = File.read("../data/html/#{@type_of_listing}.html")
+    file2 = File.read("../data/html/#{@type_of_listing}2.html")
     pages = []
     pages << Nokogiri::HTML(file)
     pages << Nokogiri::HTML(file2)
@@ -47,7 +47,7 @@ class Scraper
 
   # this script currently employs local data
   # to use live data, replace local_pages call with get_pages
-  
+
   def get_listing_data
     listing_data = []
     # get_pages.each do |page|
@@ -85,7 +85,7 @@ class Scraper
   end
 
   def save_listings
-    File.open("#{@type_of_listing}.json", "w+") do |f|
+    File.open("../data/json/#{@type_of_listing}.json", "w+") do |f|
       f.print('[')
       serialize_listings.each_with_index do |l, i|
         if (i == @number_of_listings-1)
