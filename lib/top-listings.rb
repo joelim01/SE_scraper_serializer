@@ -1,11 +1,13 @@
 #!/usr/bin/env ruby
 require_relative './models/listing.rb'
-require_relative './install_gems.rb'
+require_relative './utils/install_gems.rb'
+require_relative './listing_validator.rb'
+require_relative './listing_serializer.rb'
 require_relative './scraper.rb'
+
 
 install_gems do
   require 'nokogiri'
-  require 'open-uri'
   require 'pry'
 end
 
