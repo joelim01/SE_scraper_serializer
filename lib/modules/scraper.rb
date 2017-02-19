@@ -73,6 +73,7 @@ class Scraper
     listings.each do |l|
       listing = Listing.new
       ListingValidator.validate(l, listing)
+      listing.listing_type = @type_of_listing
       @listings << listing
     end
   end
@@ -95,6 +96,7 @@ class Scraper
         end
       end
     end
+    puts "Generated #{@type_of_listing} json file."
   end
 
 end
