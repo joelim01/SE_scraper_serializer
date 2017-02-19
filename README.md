@@ -21,7 +21,8 @@ This script can scrape the most expensive rental and sales listings in a given n
   "baths":"3.5",
   "sqft":"4300",
   "listing_type":"for-rent"
-}]```
+}]
+```
 
 ## Dependencies
 - Ruby 2.4.0
