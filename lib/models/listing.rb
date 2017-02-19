@@ -1,4 +1,5 @@
 class Listing
+  include Serializable
   attr_accessor :address, :price, :url, :listing_type, :beds, :baths, :sqft
 
   @@all = []

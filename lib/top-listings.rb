@@ -1,25 +1,26 @@
 #!/usr/bin/env ruby
-require_relative './models/listing.rb'
 require_relative './utils/install_gems.rb'
-require_relative './listing_validator.rb'
-require_relative './listing_serializer.rb'
-require_relative './scraper.rb'
-
 
 install_gems do
   require 'nokogiri'
-  require 'pry'
+  require 'oj'
 end
 
-binding.pry
+require_relative './modules/listing_validator.rb'
+require_relative './modules/listing_serializer.rb'
+require_relative './models/listing.rb'
+require_relative './modules/scraper.rb'
 
 def run
   number_of_listings = 20
   neighborhood = 'soho'
   results_per_page = 12
-  puts "Getting listings."
-  s = Scraper.new(20, 'soho')
-  s.save_listings()
+  puts "Getting the #{number_of_listings} most expensive rental and sales listings in #{neighborhood}."
+  puts "Edit the top-listings.rb file to change these parameters."
+  Scraper.new.scrape('for-sale', number_of_listings, neighborhood, results_per_page)
+  Scraper.new.scrape('for-rent', number_of_listings, neighborhood, results_per_page)
 end
+
+run()
 
 # https://streeteasy.com/for-sale/soho?sort_by=price_desc
